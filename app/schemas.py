@@ -22,3 +22,8 @@ class Item(ItemBase):
 class Config:
   # orm_mode属性をTrueに設定することで、PydanticモデルがORMモデルと互換性を持つようになる。これにより、ORMモデルからPydanticモデルへの自動変換が可能になる。
   orm_mode = True
+
+# Pydanticを使用してAPIのリクエストとレスポンスのスキーマを定義。
+# アイテムの基本属性を定義するItemBaseクラス、アイテム作成用のItemCreateクラス、
+# およびデータベースから取得したアイテムを表すItemクラスを定義する。これらのクラスは、
+# FastAPIがリクエストデータを検証し、レスポンスデータをシリアライズするために使用する。
