@@ -13,7 +13,7 @@ app = FastAPI()
 def get_db():
   # 新しいデータベースセッションを作成
   db = SessionLocal()
-  tyr:
+  try:
     # セッションを返す
     yield db
   # セッションの使用が終わった後にセッションを閉じる
@@ -23,7 +23,7 @@ def get_db():
 # エンドポイントに対するPOSTリクエストを処理するエンドポイントを定義
 @app.post("/items/", response_model=schemas.Item)
   # リクエストボディとして’ItemCreate’スキーマを使用、データベースセッションを依存関係として注入
-  def create_item(item: schemas.ItemCreate, db: Session = Depends(get_db)):
+def create_item(item: schemas.ItemCreate, db: Session = Depends(get_db)):
     # 'crud'モジュールの'create_item'関数を呼び出してアイテムを作成し、その結果を返す。
     return crud.create_item(db=db, item=item)
 
