@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 from . import models, schemas, crud
 from . database import SessionLocal, engine
+from typing import List
 
 # データベースのテーブルを作成する。`engine`を使用して、`models.Base`で定義されたすべてのテーブルをデータベースに作成。
 models.Base.metadata.create_all(bind=engine)
